@@ -28,20 +28,72 @@
 </head>
 <body>
     <!-- El iframe carga el sistema completo -->
-    <iframe id="contenido" src="sistema.html" title="Sistema de Seguridad e Higiene"></iframe>
+    <iframe id="contenido" src="sistema-completo.html" title="Sistema de Seguridad e Higiene"></iframe>
     
     <script>
-        // Bloquear el botón derecho sobre el iframe (opcional)
+        // Bloquear el botón derecho sobre el contenedor
         document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-    return false;
+            e.preventDefault();
+            return false;
+        });
+        
+        // Bloquear también sobre el iframe específicamente
+        document.getElementById('contenido').addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Bloquear teclas de inspector (F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+U)
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+I (Inspector)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+C (Inspector de elementos)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+J (Consola)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+U (Ver código fuente)
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+                return false;
+            }
         });
         
         // Detectar si alguien intenta acceder al contenido del iframe
         window.addEventListener('load', function() {
             try {
-                // Esto fallará si el iframe tiene contenido cross-origin (protección adicional)
                 const iframe = document.getElementById('contenido');
+                
+                // Intentar aplicar protección dentro del iframe si es del mismo origen
+                iframe.onload = function() {
+                    try {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        
+                        // Bloquear clic derecho dentro del iframe
+                        iframeDoc.addEventListener('contextmenu', function(e) {
+                            e.preventDefault();
+                            return false;
+                        });
+                        
+                        console.log('Protección aplicada al contenido del iframe');
+                    } catch (e) {
+                        console.log('Protección de mismo origen activa');
+                    }
+                };
+                
                 console.log('Sistema cargado correctamente');
             } catch (e) {
                 console.log('Protección activa');
