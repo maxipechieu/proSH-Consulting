@@ -556,11 +556,6 @@
             }
         }
 
-        /* Hero Mobile Preview - Oculto por defecto, visible solo en móvil */
-        .hero-mobile-preview {
-            display: none;
-        }
-
         .floating-card {
             position: absolute;
             background: var(--white);
@@ -2048,106 +2043,12 @@
             }
 
             .hero-visual {
-                display: none;
+                max-width: 600px;
+                margin: 0 auto;
             }
 
             .floating-card {
                 display: none;
-            }
-
-            /* Hero Mobile Preview - Mostrar en tablets/móvil */
-            .hero-mobile-preview {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 16px;
-                margin: 30px 0;
-                padding: 20px;
-            }
-
-            .hero-mobile-preview .preview-title {
-                font-size: 0.85rem;
-                color: rgba(255, 255, 255, 0.7);
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                font-weight: 600;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .hero-mobile-preview .devices-container {
-                display: flex;
-                align-items: flex-end;
-                justify-content: center;
-                gap: 20px;
-            }
-
-            .hero-mobile-preview .browser-preview {
-                background: var(--dark);
-                border-radius: 12px;
-                padding: 8px;
-                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 40px rgba(15, 115, 197, 0.2);
-                max-width: 300px;
-                width: 100%;
-            }
-
-            .hero-mobile-preview .browser-header {
-                display: flex;
-                gap: 6px;
-                padding: 8px 10px;
-                background: #1e293b;
-                border-radius: 8px 8px 0 0;
-            }
-
-            .hero-mobile-preview .browser-dot {
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-            }
-
-            .hero-mobile-preview .browser-dot:nth-child(1) { background: #ef4444; }
-            .hero-mobile-preview .browser-dot:nth-child(2) { background: #f59e0b; }
-            .hero-mobile-preview .browser-dot:nth-child(3) { background: #10b981; }
-
-            .hero-mobile-preview .browser-screen img {
-                width: 100%;
-                display: block;
-                border-radius: 0 0 6px 6px;
-            }
-
-            .hero-mobile-preview .phone-preview {
-                background: #1a1a2e;
-                border-radius: 24px;
-                padding: 6px;
-                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 30px rgba(15, 115, 197, 0.15);
-                width: 110px;
-                position: relative;
-            }
-
-            .hero-mobile-preview .phone-notch {
-                position: absolute;
-                top: 6px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 45px;
-                height: 16px;
-                background: #1a1a2e;
-                border-radius: 0 0 12px 12px;
-                z-index: 10;
-            }
-
-            .hero-mobile-preview .phone-preview img {
-                width: 100%;
-                border-radius: 18px;
-                display: block;
-            }
-
-            .hero-mobile-preview .preview-label {
-                font-size: 0.7rem;
-                color: rgba(255, 255, 255, 0.5);
-                text-align: center;
-                margin-top: 8px;
             }
 
             .modules-wrapper {
@@ -2207,21 +2108,6 @@
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2.2rem;
-            }
-
-            /* Hero Mobile Preview ajustes para tablet/móvil */
-            .hero-mobile-preview .devices-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-
-            .hero-mobile-preview .browser-preview {
-                max-width: 100%;
-            }
-
-            .hero-mobile-preview .phone-preview {
-                width: 130px;
             }
 
             .section-header h2 {
@@ -2292,20 +2178,6 @@
                 font-size: 1rem;
             }
 
-            /* Hero Mobile Preview ajustes móvil pequeño */
-            .hero-mobile-preview {
-                padding: 15px 10px;
-                margin: 20px 0;
-            }
-
-            .hero-mobile-preview .preview-title {
-                font-size: 0.75rem;
-            }
-
-            .hero-mobile-preview .phone-preview {
-                width: 110px;
-            }
-
             .hero-badges {
                 gap: 8px;
             }
@@ -2323,6 +2195,14 @@
             .hero-buttons .btn {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .hero-visual {
+                max-width: 100%;
+            }
+
+            .mockup-frame {
+                transform: scale(0.9);
             }
 
             .section-header h2 {
@@ -2662,30 +2542,6 @@
                     <strong>funcionamiento 100% offline</strong>, ideal para obras y plantas industriales 
                     sin conexión a internet.
                 </p>
-                
-                <!-- Preview de dispositivos - Solo visible en móvil/tablet -->
-                <div class="hero-mobile-preview">
-                    <span class="preview-title"><i class="fas fa-desktop"></i> Vista del Sistema</span>
-                    <div class="devices-container">
-                        <div class="browser-preview">
-                            <div class="browser-header">
-                                <div class="browser-dot"></div>
-                                <div class="browser-dot"></div>
-                                <div class="browser-dot"></div>
-                            </div>
-                            <div class="browser-screen">
-                                <img src="assets/screenshots/Captura_de_pantalla_20251214_164205.png" alt="Sistema proSH - Dashboard Principal">
-                            </div>
-                            <p class="preview-label">Navegador Web</p>
-                        </div>
-                        <div class="phone-preview">
-                            <div class="phone-notch"></div>
-                            <img src="assets/screenshots/mobile_dashboard.jpg" alt="Sistema proSH - Vista Móvil">
-                            <p class="preview-label">Móvil</p>
-                        </div>
-                    </div>
-                </div>
-                
                 <div class="hero-badges">
                     <div class="hero-badge">
                         <i class="fas fa-gavel"></i>
